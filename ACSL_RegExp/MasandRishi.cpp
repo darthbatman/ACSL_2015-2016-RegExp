@@ -62,7 +62,10 @@ int main() {
 							cout << ", " << allInputStrings[j];
 							foundCount++;
 						}
-					}	
+					}
+					else {
+						(allInputStrings[j])[(allInputStrings[j].find(beforeDot) + beforeDot.length())] = temp;
+					}
 				}
 			}
 			cout << endl;
@@ -116,6 +119,11 @@ int main() {
 			cout << endl;
 		}
 		else if (regExString.find("*") != string::npos) {
+			//cout << endl;
+			//for (int a = 0; a < 10; a++) {
+			//	cout << allInputStrings[a] << ", ";
+			//}
+			//cout << endl;
 			int foundCount = 0;
 			string beforeStar = "";
 			string afterStar = regExString.substr(regExString.find("*") + 1);
@@ -129,6 +137,7 @@ int main() {
 							string inBetween = allInputStrings[j].substr(beforeStar.length(), allInputStrings[j].find(afterStar) - beforeStar.length());
 							if (inBetween.length() > 0) {
 								bool allMatches = true;
+								//cout << inBetween << endl;
 								for (int p = 0; p < inBetween.length(); p++) {
 									if (inBetween[p] == regExString[regExString.find("*") - 1]) {
 										
